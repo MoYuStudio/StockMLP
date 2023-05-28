@@ -12,7 +12,7 @@ print(df.describe())  # 显示统计摘要
 
 # 绘制时间序列图
 plt.figure(figsize=(10, 6))
-plt.plot(df['日期'], df['收盘价'])
+plt.plot(df['Date'], df['Close'])
 plt.xlabel('日期')
 plt.ylabel('收盘价')
 plt.title('股票价格随时间变化')
@@ -21,7 +21,7 @@ plt.show()
 
 # 绘制直方图和分布图
 plt.figure(figsize=(8, 6))
-plt.hist(df['收盘价'], bins=20, edgecolor='black')
+plt.hist(df['Close'], bins=20, edgecolor='black')
 plt.xlabel('收盘价')
 plt.ylabel('频率')
 plt.title('收盘价分布')
@@ -39,9 +39,9 @@ plt.show()
 
 # 移动平均线
 plt.figure(figsize=(10, 6))
-plt.plot(df['日期'], df['收盘价'], label='收盘价')
-plt.plot(df['日期'], df['收盘价'].rolling(window=20).mean(), label='20日移动平均线')
-plt.plot(df['日期'], df['收盘价'].rolling(window=50).mean(), label='50日移动平均线')
+plt.plot(df['Date'], df['Close'], label='收盘价')
+plt.plot(df['Date'], df['Close'].rolling(window=20).mean(), label='20日移动平均线')
+plt.plot(df['Date'], df['Close'].rolling(window=50).mean(), label='50日移动平均线')
 plt.xlabel('日期')
 plt.ylabel('价格')
 plt.title('移动平均线')
