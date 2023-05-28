@@ -10,10 +10,10 @@ all_data = pd.DataFrame()
 
 for code in codes:
     # 获取数据
-    data = yf.download(code, start='2010-01-01', end='2023-05-1')
+    data = yf.download(code, start='2010-01-01', end='2023-05-3')
 
     print(data.tail(7))
 
     # 将数据保存到Excel文件xlsx
     # data.to_excel('data/stock_data.csv')
-    data.to_csv('data/stock_data.csv')
+    # data.to_csv('data/stock_data.csv')
