@@ -1,6 +1,11 @@
 
 import pandas as pd
 import numpy as np
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import MinMaxScaler
+from sklearn.neural_network import MLPRegressor
+from sklearn.metrics import mean_squared_error
 
 # 加载股票市场数据到 Pandas DataFrame
 df = pd.read_csv('data/stock_data.csv')
@@ -47,4 +52,43 @@ df['Volatility'] = df['Log_Return'].rolling(window=252).std() * np.sqrt(252)
 df = df.dropna()
 
 # 打印更新后的 DataFrame
-print(df.head())
+# print(df.head())
+
+# 将数据分为特征和目标变量
+X = df[['Close_Lag1', 'Close_Lag7', 'Volume_Lag1', 'SMA_20', 'SMA_50', 'RSI', 'MACD', 'BB_upper', 'BB_lower', 'ATR', 'Volatility']]
+y = df['Close']
+
+# 将数据分为训练集和测试集
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# 特征缩放
+scaler = MinMaxScaler()
+X_train_scaled = scaler.fit_transform(X_train)
+X_test_scaled = scaler.transform(X_test)
+
+# 模型训练
+model = MLPRegressor(hidden_layer_sizes=(100, 50), activation='relu', random_state=42)
+model.fit(X_train_scaled, y_train)
+
+# 模型评估
+y_pred = model.predict(X_test_scaled)
+mse = mean_squared_error(y_test, y_pred)
+print(f"均方误差（Mean Squared Error）: {mse}")
+
+# 模型预测
+new_data = pd.DataFrame({  # 替换为要进行预测的新数据
+    'Close_Lag1': [123.45],
+    'Close_Lag7': [120.0],
+    'Volume_Lag1': [10000],
+    'SMA_20': [125.0],
+    'SMA_50': [130.0],
+    'RSI': [60.0],
+    'MACD': [2.5],
+    'BB_upper': [135.0],
+    'BB_lower': [120.0],
+    'ATR': [5.0],
+    'Volatility': [0.15]
+})
+new_data_scaled = scaler.transform(new_data)
+prediction = model.predict(new_data_scaled)
+print(f"预测结果：{prediction}")
