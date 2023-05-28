@@ -3,7 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # 加载股票市场数据到 Pandas DataFrame
-df = pd.read_csv('data/stock_data.csv')  # 替换 'data/stock_data.csv' 为你的数据文件路径
+df = pd.read_csv('data/stock_data.csv')
 
 # 数据摘要
 print(df.head())  # 显示前几行

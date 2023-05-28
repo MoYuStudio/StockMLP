@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 
 # 加载股票市场数据到 Pandas DataFrame
-df = pd.read_csv('data/stock_data.csv')  # 替换 'data/stock_data.csv' 为你的数据文件路径
+df = pd.read_csv('data/stock_data.csv')
 
 # 创建滞后特征
 df['收盘价滞后1天'] = df['收盘价'].shift(1)
