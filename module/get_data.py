@@ -10,7 +10,7 @@ all_data = pd.DataFrame()
 
 for code in codes:
     # 获取数据
-    data = yf.download(code, start='2023-01-01', end='2023-05-1')
+    data = yf.download(code, start='2010-01-01', end='2023-05-1')
 
     print(data.tail(7))
 
