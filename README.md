@@ -1,1 +1,1 @@
-# StockMLP
+# StockMLP 股票多层感知机
