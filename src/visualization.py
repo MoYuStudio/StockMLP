@@ -43,9 +43,9 @@ plt.show()
 
 # 移动平均线
 plt.figure(figsize=(10, 6))
-plt.plot(df['Date'], df['Close'], label='收盘价')
-plt.plot(df['Date'], df['Close'].rolling(window=20).mean(), label='20日移动平均线')
-plt.plot(df['Date'], df['Close'].rolling(window=50).mean(), label='50日移动平均线')
+plt.plot(df['Date'], df['Close'], label='收盘价', fontproperties=font_prop)
+plt.plot(df['Date'], df['Close'].rolling(window=20).mean(), label='20日移动平均线', fontproperties=font_prop)
+plt.plot(df['Date'], df['Close'].rolling(window=50).mean(), label='50日移动平均线', fontproperties=font_prop)
 plt.xlabel('日期', fontproperties=font_prop)
 plt.ylabel('价格', fontproperties=font_prop)
 plt.title('移动平均线', fontproperties=font_prop)
