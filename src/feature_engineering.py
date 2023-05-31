@@ -127,7 +127,7 @@ x_test_scaled = scaler.transform(x_test)
 # WV人话
 # hidden_layer_sizes 神经元(if)层数 第1层100 第2层50， activation激活函数， random_state随机数生成器的种子
 
-model = MLPRegressor(hidden_layer_sizes=(1000, 500, 100), activation='relu', random_state=42)
+model = MLPRegressor(hidden_layer_sizes=(1000, 700, 500, 100), activation='relu', random_state=42)
 model.fit(x_train_scaled, y_train)
 
 # 模型评估
