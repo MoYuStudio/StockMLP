@@ -6,6 +6,11 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.neural_network import MLPRegressor
 from sklearn.metrics import mean_squared_error
+import matplotlib.pyplot as plt
+from matplotlib.font_manager import FontProperties
+
+font_path = 'ZiYuYongSongTi-2.ttf'
+font_prop = FontProperties(fname=font_path)
 
 # 加载股票市场数据到 Pandas DataFrame
 df = pd.read_csv('data/stock_data.csv')
@@ -147,3 +152,14 @@ new_data = pd.DataFrame({
 new_data_scaled = scaler.transform(new_data)
 prediction = model.predict(new_data_scaled)
 print(f"预测结果：{prediction}")
+
+# 可视化
+plt.figure(figsize=(10, 6))
+plt.plot(y_test.values, label='实际值 (Actual)', color='blue')
+plt.plot(y_pred, label='预测值 (Predicted)', color='orange')
+plt.xlabel('样本索引 (Sample Index)', fontproperties=font_prop)
+plt.ylabel('收盘价 (Close Price)', fontproperties=font_prop)
+plt.title('实际值 vs 预测值 (Actual vs Predicted)', fontproperties=font_prop)
+plt.legend(prop=font_prop)
+plt.show()
+plt.show()
