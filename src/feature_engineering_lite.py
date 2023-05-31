@@ -35,7 +35,7 @@ x_train_scaled = scaler.fit_transform(x_train)
 x_test_scaled = scaler.transform(x_test)
 
 # 模型训练
-model = MLPRegressor(hidden_layer_sizes=(1000, 700, 500, 100), activation='relu', random_state=42)
+model = MLPRegressor(hidden_layer_sizes=(100, 50), activation='relu', random_state=42)
 model.fit(x_train_scaled, y_train)
 
 # 模型评估
